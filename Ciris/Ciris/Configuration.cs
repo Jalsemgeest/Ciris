@@ -10,8 +10,7 @@ namespace Ciris
     {
         #region Default Configuration
         public const string DefaultConfigurationFileName = "ciris.conf";
-        public const string DefaultConfiguration =
-@"# comments: if the character '#' is found, the rest of the line is ignored.
+        public const string DefaultConfiguration = @"# comments: if the character '#' is found, the rest of the line is ignored.
 # quotes: allow to place a '#' inside a value. they do not appear in the final result.
 # i.e. blah=""hello #1!"" will create a parameter blah with a value of: hello #1!
 # To place a quotation mark inside quotes, double it.
@@ -47,90 +46,38 @@ ShowAeroWarning=true
 # the elements separated by commas.
 # The decimal separator is a dot.
 
-Simple Inversion=win+alt+F1
-{ -1,  0,  0,  0,  0 }
-{  0, -1,  0,  0,  0 }
-{  0,  0, -1,  0,  0 }
+#Protanopia
+Protanopia=win+ctrl+F1
+{  1,  0,  1,  0,  0 }
+{  0,  1,  0,  0,  0 }
+{  0,  0,  0,  0,  0 }
 {  0,  0,  0,  1,  0 }
-{  1,  1,  1,  0,  1 }
+{  0,  0,  0,  0,  1 }
 
-# Theoretical optimal transfomation (but ugly desaturated pure colors due to ""overflows""...)
-# Many thanks to Tom MacLeod who gave me the idea for these inversion modes.
-Smart Inversion=win+alt+F2
-{  0.3333333, -0.6666667, -0.6666667,  0.0000000,  0.0000000 }
-{ -0.6666667,  0.3333333, -0.6666667,  0.0000000,  0.0000000 }
-{ -0.6666667, -0.6666667,  0.3333333,  0.0000000,  0.0000000 }
-{  0.0000000,  0.0000000,  0.0000000,  1.0000000,  0.0000000 }
-{  1.0000000,  1.0000000,  1.0000000,  0.0000000,  1.0000000 }
-
-# High saturation, good pure colors.
-Smart Inversion Alt 1=win+alt+F3
-{  1, -1, -1,  0,  0 }
-{ -1,  1, -1,  0,  0 }
-{ -1, -1,  1,  0,  0 }
-{  0,  0,  0,  1,  0 }
-{  1,  1,  1,  0,  1 }
-
-# Overall desaturated, yellows and blue plain bad. actually relaxing and very usable.
-Smart Inversion Alt 2=win+alt+F4
-{  0.39, -0.62, -0.62,  0.00,  0.00 }
-{ -1.21, -0.22, -1.22,  0.00,  0.00 }
-{ -0.16, -0.16,  0.84,  0.00,  0.00 }
-{  0.00,  0.00,  0.00,  1.00,  0.00 }
-{  1.00,  1.00,  1.00,  0.00,  1.00 }
-
-# High saturation. yellows and blues plain bad. actually quite readable.
-Smart Inversion Alt 3=win+alt+F5
-{  1.0895080, -0.9326327, -0.9326330,  0.0000000,  0.0000000 }
-{ -1.8177180,  0.1683074, -1.8416920,  0.0000000,  0.0000000 }
-{ -0.2445895, -0.2478156,  1.7621850,  0.0000000,  0.0000000 }
-{  0.0000000,  0.0000000,  0.0000000,  1.0000000,  0.0000000 }
-{  1.0000000,  1.0000000,  1.0000000,  0.0000000,  1.0000000 }
-
-# Not so readable, good colors (CMY colors a bit desaturated, still more saturated than normal).
-Smart Inversion Alt 4=win+alt+F6
-{  0.50, -0.78, -0.78,  0.00,  0.00 }
-{ -0.56,  0.72, -0.56,  0.00,  0.00 }
-{ -0.94, -0.94,  0.34,  0.00,  0.00 }
-{  0.00,  0.00,  0.00,  1.00,  0.00 }
-{  1.00,  1.00,  1.00,  0.00,  1.00 }
-
-Negative Sepia=win+alt+F7
-{ -0.393, -0.349, -0.272,  0.000,  0.000 }
-{ -0.769, -0.686, -0.534,  0.000,  0.000 }
-{ -0.189, -0.168, -0.131,  0.000,  0.000 }
-{  0.000,  0.000,  0.000,  1.000,  0.000 }
-{  1.351,  1.203,  0.937,  0.000,  1.000 }
-
-Negative Grayscale=win+alt+F8
-{ -0.3, -0.3, -0.3,  0.0,  0.0 }
-{ -0.6, -0.6, -0.6,  0.0,  0.0 }
+#Tritanopia
+Tritanopia=win+ctrl+F2
+{  1.0,  0.0,  0.0,  0.0,  0.0 }
 { -0.1, -0.1, -0.1,  0.0,  0.0 }
-{  0.0,  0.0,  0.0,  1.0,  0.0 }
-{  1.0,  1.0,  1.0,  0.0,  1.0 }
-
-#Grayscaled
-Negative Red=win+alt+F9
-{ -0.3,  0.0,  0.0,  0.0,  0.0 }
-{ -0.6,  0.0,  0.0,  0.0,  0.0 }
-{ -0.1,  0.0,  0.0,  0.0,  0.0 }
-{  0.0,  0.0,  0.0,  1.0,  0.0 }
-{  1.0,  0.0,  0.0,  0.0,  1.0 }
-
-#Grayscaled
-Red=win+alt+F10
-{  0.3,  0.0,  0.0,  0.0,  0.0 }
-{  0.6,  0.0,  0.0,  0.0,  0.0 }
-{  0.1,  0.0,  0.0,  0.0,  0.0 }
+{  0.0,  1.0,  1.0,  0.0,  0.0 }
 {  0.0,  0.0,  0.0,  1.0,  0.0 }
 {  0.0,  0.0,  0.0,  0.0,  1.0 }
 
-Grayscale=win+alt+F11
-{ 0.3,  0.3,  0.3,  0.0,  0.0 }
-{ 0.6,  0.6,  0.6,  0.0,  0.0 }
-{ 0.1,  0.1,  0.1,  0.0,  0.0 }
-{ 0.0,  0.0,  0.0,  1.0,  0.0 }
-{ 0.0,  0.0,  0.0,  0.0,  1.0 }
+#Temp
+Temp=win+ctrl+F3
+{  0,  0,  1,  0,  0 }
+{  0,  1,  0,  0,  0 }
+{  1,  0,  0,  0,  0 }
+{  0,  0,  0,  1,  0 }
+{  0,  0,  0,  0,  1 }
+
+#temp2
+Temp2=win+ctrl+F4
+{  0,  0,  1,  0,  0 }
+{  1,  1,  0,  0,  0 }
+{  0,  0,  0,  0,  0 }
+{  0,  0,  0,  1,  0 }
+{  0,  0,  0,  0,  1 }
+
 ";
         #endregion 
 
@@ -172,13 +119,12 @@ Grayscale=win+alt+F11
             {
                 try
                 {
-                    this.InitialColorEffect = this.ColorEffects.Single(x =>
-                        x.Value.Description.ToLowerInvariant() == InitialColorEffectName.ToLowerInvariant()).Value;
+                    this.InitialColorEffect = new ScreenColorEffect(BuiltinMatrices.Protanopia, "Protanopia");//this.ColorEffects.Single(x => x.Value.Description.ToLowerInvariant() == InitialColorEffectName.ToLowerInvariant()).Value;
                 }
                 catch (Exception)
                 {
                     // Probably not ideal
-                    this.InitialColorEffect = new ScreenColorEffect(BuiltinMatrices.Negative, "Negative");
+                    this.InitialColorEffect = new ScreenColorEffect(BuiltinMatrices.Protanopia, "Protanopia");
                 }
             }
         }

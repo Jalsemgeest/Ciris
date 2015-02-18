@@ -49,6 +49,10 @@ namespace Ciris
         /// </summary>
         public static float[,] NegativeHueShift180Variation4 { get; private set; }
 
+        public static float[,] Protanopia { get; private set; }
+
+        public static float[,] Tritanopia { get; private set; }
+
         static BuiltinMatrices()
         {
             Identity = new float[,] {
@@ -128,6 +132,21 @@ namespace Ciris
 				{   0.0f,   0.0f,   0.0f, 1.0f, 0.0f },
 				{   1.0f,   1.0f,   1.0f, 0.0f, 1.0f }
 			};
+            Protanopia = new float[,] {
+                {  1.0f,  0.0f,  1.0f,  0.0f,  0.0f },
+                {  0.0f,  1.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
+            Tritanopia = new float[,] {
+                {  1.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                { -0.1f, -0.1f, -0.1f,  0.0f,  0.0f },
+                {  0.0f,  1.0f,  1.0f,  0.0f,  0.0f},
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f, 0.0f,  0.0f,  0.0f,  1.0f }
+
+            };
         }
 
         private static string MatrixToString(float[,] matrix)
