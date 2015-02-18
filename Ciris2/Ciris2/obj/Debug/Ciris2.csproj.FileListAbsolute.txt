@@ -1,1 +1,2 @@
 C:\Users\Durzo\Documents\GitHub\Ciris\Ciris2\Ciris2\bin\Debug\Ciris2.exe.config
+C:\Users\Durzo\Documents\GitHub\Ciris\Ciris2\Ciris2\obj\Debug\Ciris2.csprojResolveAssemblyReference.cache
