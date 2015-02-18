@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
+/**
+ * This class holds the Parser which is used to Parse configuration files.
+ **/
+
+
 namespace Ciris
 {
     /// <summary>
@@ -180,25 +185,33 @@ namespace Ciris
             StringBuilder left = new StringBuilder();
             StringBuilder right = new StringBuilder();
             bool insideQuotes = false;
+
+            // Iterates through the configuration file.
             while (i < cleanedContent.Length)
             {
+                // Get the next character
                 char read = cleanedContent[i];
                 switch (read)
                 {
                     case '"':
+                        // If we are not inside quotes...
                         if (insideQuotes)
                         {
                             //handle double quotes inside quotation marks
                             if (i + 1 < cleanedContent.Length && cleanedContent[i + 1] == '"')
                             {
+                                // Add the quotes to the right.
                                 right.Append('"');
+                                // Increment i as we don't need the next char as we know what it is already!
                                 i++;
                                 break;
                             }
                         }
+                        // Flip insideQuotes.
                         insideQuotes = !insideQuotes;
                         break;
                     case '#':
+                        // It's a comment.
                         if (insideQuotes)
                         {
                             goto default;

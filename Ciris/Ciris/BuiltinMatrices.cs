@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 
+
+/**
+ * This is where all the magic happens.
+ * This is the class where matrices are used with the built-in magnification tool that is provided by Windows.
+ * 
+ **/
+
+
+
 namespace Ciris
 {
     /// <summary>
@@ -206,6 +215,7 @@ namespace Ciris
             return c;
         }
 
+        // This is where we actually use the matrices with the SetMagnificationDesktopColorEffect.
         public static void ChangeColorEffect(float[,] matrix)
         {
             ColorEffect colorEffect = new ColorEffect(matrix);
@@ -216,6 +226,7 @@ namespace Ciris
             }
         }
 
+        // This is where it changes the color.
         public static void InterpolateColorEffect(float[,] fromMatrix, float[,] toMatrix, int timeBetweenFrames = 15)
         {
             List<float[,]> transitions = Interpolate(fromMatrix, toMatrix);

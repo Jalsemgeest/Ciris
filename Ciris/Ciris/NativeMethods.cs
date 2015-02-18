@@ -3,6 +3,13 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Diagnostics;
 
+/**
+ * This class contains system classes and information from windows.
+ * INCLUDES:
+ * - Keeping the window on the top-most point so it is always in front of everything else.
+ **/
+
+
 namespace Ciris
 {
     // This is based off the Windows Magnification API

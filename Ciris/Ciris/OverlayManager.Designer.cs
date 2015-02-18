@@ -15,6 +15,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            // Setting up the Container.
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OverlayManager));
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);

@@ -4,6 +4,12 @@ using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 
+/**
+ * This is where the configuration of the program takes place.  Most of this is for startup and is not used otherwise.
+ * The profiles are brought in at this point and Hotkeys are initialized.
+ **/
+
+
 namespace Ciris
 {
     class Configuration : IConfigurable
@@ -111,15 +117,18 @@ Temp2=win+ctrl+F4
             }
             catch (Exception)
             {
+                                                                                                        // Set this to be the default if we don't want people to edit the configurations.
                 configFileContents = DefaultConfiguration;
             }
 
+            // Reading in the configuration file string.
             Parser.AssignConfiguration(configFileContents, this, new HotKeyParser(), new MatrixParser());
             if (!string.IsNullOrWhiteSpace(InitialColorEffectName))
             {
                 try
                 {
-                    this.InitialColorEffect = new ScreenColorEffect(BuiltinMatrices.Protanopia, "Protanopia");//this.ColorEffects.Single(x => x.Value.Description.ToLowerInvariant() == InitialColorEffectName.ToLowerInvariant()).Value;
+                    // Try seeing it to the Protanopia standard.
+                    this.InitialColorEffect = new ScreenColorEffect(BuiltinMatrices.Protanopia, "Protanopia");
                 }
                 catch (Exception)
                 {
@@ -266,14 +275,17 @@ Temp2=win+ctrl+F4
 			for (int x = 0; x < rows.Count; x++)
 			{
 				var row = rows[x];
+                // Split the rows into columns based on the commas.
 				var columnSplit = row.Groups["row"].Value.Split(',');
 				if (columnSplit.Length != 5)
 				{
 					throw new Exception("The matrices must have 5 columns.");
 				}
+                // For 0 --> 4
 				for (int y = 0; y < matrix.GetLength(1); y++)
 				{
 					float value;
+                    // If we cannot translate the value into a float...
 					if (!float.TryParse(columnSplit[y],
 						System.Globalization.NumberStyles.Float,
 						System.Globalization.NumberFormatInfo.InvariantInfo,
@@ -281,6 +293,7 @@ Temp2=win+ctrl+F4
 					{
 						throw new Exception(string.Format("Unable to parse \"{0}\" to a float.", columnSplit[y]));
 					}
+                    // Otherwise put the value in the matrix...
 					matrix[x, y] = value;
 				}
 			}
