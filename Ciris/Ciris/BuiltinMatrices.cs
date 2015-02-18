@@ -7,9 +7,11 @@ using System.Runtime.InteropServices;
 /**
  * This is where all the magic happens.
  * This is the class where matrices are used with the built-in magnification tool that is provided by Windows.
- * 
  **/
 
+// TODO
+// Remove some of the functionality for the other Matrices.
+// Add in a method to change it in real time.
 
 
 namespace Ciris

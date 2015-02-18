@@ -10,6 +10,11 @@ using System.Linq;
  **/
 
 
+// TODO
+// Remove Hotkeys for Profiles
+// Remove Configuration File - LATER
+
+
 namespace Ciris
 {
     class Configuration : IConfigurable

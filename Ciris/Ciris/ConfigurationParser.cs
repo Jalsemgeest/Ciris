@@ -8,6 +8,8 @@ using System.Reflection;
  * This class holds the Parser which is used to Parse configuration files.
  **/
 
+// TODO
+// Remove the Parser class?  Shouldn't be needed given that we will not be doing Hotkeys for Profiles.
 
 namespace Ciris
 {

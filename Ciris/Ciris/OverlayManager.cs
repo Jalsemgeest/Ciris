@@ -7,6 +7,12 @@ using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Collections.Concurrent;
 
+
+// TODO
+// Remove the registration of Hotkeys for the Profiles
+// Add event handler for double click to open the GUI
+
+
 namespace Ciris
 {
     /// <summary>

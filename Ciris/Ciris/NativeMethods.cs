@@ -9,6 +9,7 @@ using System.Diagnostics;
  * - Keeping the window on the top-most point so it is always in front of everything else.
  **/
 
+// Stays the same.
 
 namespace Ciris
 {
