@@ -121,10 +121,11 @@ namespace Ciris
             success &= TryRegisterHotKeyAppendError(Configuration.Current.ExitKey, sb);
             foreach (var item in Configuration.Current.ColorEffects)
             {
-                if (item.Key != HotKey.Empty)
+                // Don't need to try to register them for configurations.
+                /*if (item.Key != HotKey.Empty)
                 {
-                    success &= TryRegisterHotKeyAppendError(item.Key, sb);
-                }
+                    //success &= TryRegisterHotKeyAppendError(item.Key, sb);
+                }*/
             }
             if (!success)
             {
