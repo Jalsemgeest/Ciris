@@ -41,6 +41,7 @@ namespace Ciris
             this.trayIcon.Text = "Ciris";
             this.trayIcon.Visible = true;
             this.trayIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseClick);
+            this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_DoubleClick);
             // 
             // trayIconContextMenuStrip
             // 

@@ -21,6 +21,12 @@ namespace Ciris
     partial class OverlayManager : Form
     {
 
+
+        // Added Ciris;
+        private Ciris ciris;
+
+        private bool cirisOpen = false;
+
         /// <summary>
         /// control whether the main loop is paused or not.
         /// </summary>
@@ -217,6 +223,23 @@ namespace Ciris
             }
         }
 
+        // Setting up public API for Pausing, Starting and Changing the loop.
+
+        public void toggleColor()
+        {
+            this.mainLoopPaused = !mainLoopPaused;
+        }
+
+        public bool isPaused()
+        {
+            return this.mainLoopPaused;
+        }
+
+        public void setMatrix(ScreenColorEffect effect)
+        {
+            this.InvokeColorEffect(effect);
+        }
+
         public bool TryRegisterHotKey(HotKey hotkey, out AlreadyRegisteredHotKeyException exception)
         {
             bool ok = NativeMethods.RegisterHotKey(this.Handle, hotkey.Id, hotkey.Modifiers, hotkey.Key);
@@ -395,8 +418,29 @@ namespace Ciris
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                Toggle();
+                // Don't want it to toggle it for now.
+                //Toggle();
             }
+        }
+
+        private void trayIcon_DoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                if (ciris == null || !cirisOpen)
+                {
+                    ciris = new Ciris();
+                    ciris.FormClosed += ciris_FormClosed;
+                    cirisOpen = true;
+                }
+                ciris.Show();
+            }
+        }
+
+        // This is called when the GUI is closed.  It creates another GUI so it can be reopened if need be.
+        void ciris_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cirisOpen = false;
         }
 
         #endregion

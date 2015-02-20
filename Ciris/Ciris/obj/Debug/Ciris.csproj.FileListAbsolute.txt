@@ -5,3 +5,4 @@ C:\Users\Durzo\Documents\GitHub\Ciris\Ciris\Ciris\bin\Debug\Ciris.exe
 C:\Users\Durzo\Documents\GitHub\Ciris\Ciris\Ciris\bin\Debug\Ciris.pdb
 C:\Users\Durzo\Documents\GitHub\Ciris\Ciris\Ciris\obj\Debug\Ciris.exe
 C:\Users\Durzo\Documents\GitHub\Ciris\Ciris\Ciris\obj\Debug\Ciris.pdb
+C:\Users\Durzo\Documents\GitHub\Ciris\Ciris\Ciris\obj\Debug\Ciris.Ciris.resources
