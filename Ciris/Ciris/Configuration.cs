@@ -148,7 +148,7 @@ Protanopia Simulation=
             {
                 try
                 {
-                    // Try seeing it to the Protanopia standard.
+                    // Try setting it to the Protanopia standard.
                     this.InitialColorEffect = new ScreenColorEffect(BuiltinMatrices.Protanopia, "Protanopia");
                 }
                 catch (Exception)

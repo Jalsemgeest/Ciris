@@ -84,7 +84,7 @@ namespace Ciris
                 //System.Threading.Thread.Sleep(80);
 
                 // If it's paused, then set the color on.
-                if (this.overlay.isPaused()) { this.overlay.toggleColor(); }
+                //if (this.overlay.isPaused()) { this.overlay.toggleColor(); }
 
                 // Enable the slider...
             }
