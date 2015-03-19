@@ -10,6 +10,11 @@ using System.Linq;
  **/
 
 
+// TODO
+// Remove Hotkeys for Profiles                              - COMPLETED (I think...)
+// Remove Configuration File - LATER
+
+
 namespace Ciris
 {
     class Configuration : IConfigurable
@@ -53,15 +58,15 @@ ShowAeroWarning=true
 # The decimal separator is a dot.
 
 #Protanopia
-Protanopia=win+ctrl+F1
-{  1,  0,  1,  0,  0 }
+Protanopia=
+{  1,  0,  0.6,  0,  0 }
 {  0,  1,  0,  0,  0 }
-{  0,  0,  0,  0,  0 }
+{  0,  0,  0.4,  0,  0 }
 {  0,  0,  0,  1,  0 }
 {  0,  0,  0,  0,  1 }
 
 #Tritanopia
-Tritanopia=win+ctrl+F2
+Tritanopia=
 {  1.0,  0.0,  0.0,  0.0,  0.0 }
 { -0.1, -0.1, -0.1,  0.0,  0.0 }
 {  0.0,  1.0,  1.0,  0.0,  0.0 }
@@ -69,7 +74,7 @@ Tritanopia=win+ctrl+F2
 {  0.0,  0.0,  0.0,  0.0,  1.0 }
 
 #Temp
-Temp=win+ctrl+F3
+Temp=
 {  0,  0,  1,  0,  0 }
 {  0,  1,  0,  0,  0 }
 {  1,  0,  0,  0,  0 }
@@ -77,12 +82,28 @@ Temp=win+ctrl+F3
 {  0,  0,  0,  0,  1 }
 
 #temp2
-Temp2=win+ctrl+F4
+Temp2=
 {  0,  0,  1,  0,  0 }
 {  1,  1,  0,  0,  0 }
 {  0,  0,  0,  0,  0 }
 {  0,  0,  0,  1,  0 }
 {  0,  0,  0,  0,  1 }
+
+#Protanopia Simulation
+Protanopia Simulation=
+{  0.00,  0.00,  0.00,  0.00,  0.00 }
+{  0.50,  0.50,  0.00,  0.00,  0.00 }
+{  1.00,  0.65,  1.00,  0.00,  0.00 }
+{  0.00,  0.00,  0.00,  1.00,  0.00 }
+{  0.00,  0.00,  0.00,  0.00,  1.00 }
+
+#NewProt
+New Protanopia=
+{  1.0,  -0.25,  0,  0.0,  0.0 }
+{  0.25,  1.0,  0,  0.0,  0.0 }
+{  0.0,  0.0,  1,  0.0,  0.0 }
+{  0.0,  0.0,  0.0,  1.0,  0.0 }
+{  0.0,  0.0,  0.0,  0.0,  1.0 }
 
 ";
         #endregion 
@@ -107,7 +128,7 @@ Temp2=win+ctrl+F4
 
         private Configuration()
         {
-            ColorEffects = new List<KeyValuePair<HotKey, ScreenColorEffect>>();
+            ColorEffects = new List<KeyValuePair<ProfileKey, ScreenColorEffect>>();
 
             string configFileContents;
 
@@ -122,12 +143,12 @@ Temp2=win+ctrl+F4
             }
 
             // Reading in the configuration file string.
-            Parser.AssignConfiguration(configFileContents, this, new HotKeyParser(), new MatrixParser());
+            Parser.AssignConfiguration(configFileContents, this, new HotKeyParser(), new ProfileKeyParser(), new MatrixParser());
             if (!string.IsNullOrWhiteSpace(InitialColorEffectName))
             {
                 try
                 {
-                    // Try seeing it to the Protanopia standard.
+                    // Try setting it to the Protanopia standard.
                     this.InitialColorEffect = new ScreenColorEffect(BuiltinMatrices.Protanopia, "Protanopia");
                 }
                 catch (Exception)
@@ -144,7 +165,7 @@ Temp2=win+ctrl+F4
 		public HotKey ExitKey { get; protected set; }
 
 		[CorrespondTo("SmoothTransitions")]
-		public bool SmoothTransitions { get; protected set; }
+		public bool SmoothTransitions { get; set; }
 
 		[CorrespondTo("SmoothToggles")]
 		public bool SmoothToggles { get; protected set; }
@@ -163,14 +184,14 @@ Temp2=win+ctrl+F4
 
 		public ScreenColorEffect InitialColorEffect { get; protected set; }
 
-		public List<KeyValuePair<HotKey, ScreenColorEffect>> ColorEffects { get; protected set; }
+		public List<KeyValuePair<ProfileKey, ScreenColorEffect>> ColorEffects { get; protected set; }
 
         public void HandleDynamicKey(string key, string value) {
             // value is already trimmed
             if (value.StartsWith("{")) {
                 // No hotkey
-                this.ColorEffects.Add(new KeyValuePair<HotKey, ScreenColorEffect>(
-                    HotKey.Empty,
+                this.ColorEffects.Add(new KeyValuePair<ProfileKey, ScreenColorEffect>(
+                    ProfileKey.Empty,
                     new ScreenColorEffect(MatrixParser.StaticParseMatrix(value), key)));
             }
             else {
@@ -180,10 +201,33 @@ Temp2=win+ctrl+F4
                     throw new Exception(string.Format(
                         "The value assigned to \"{0}\" is unexpected.", key));
                 }
-                this.ColorEffects.Add(new KeyValuePair<HotKey,ScreenColorEffect>(
-                    HotKeyParser.StaticParse(splitted[0]),
+                this.ColorEffects.Add(new KeyValuePair<ProfileKey,ScreenColorEffect>(
+                    ProfileKeyParser.StaticParse(splitted[0]),
                     new ScreenColorEffect(MatrixParser.StaticParseMatrix(splitted[1]), key)));
             }
+        }
+    }
+
+    class ProfileKeyParser : ICustomParser
+    {
+        public Type ReturnType
+        {
+            get { return typeof(ProfileKey);  }
+        }
+
+        public object Parse(string rawValue, object customParameter)
+        {
+            int defaultId = -1;
+            if (customParameter is int)
+            {
+                defaultId = (int)customParameter;
+            }
+            return StaticParse(rawValue, defaultId);
+        }
+
+        public static ProfileKey StaticParse(string rawValue, int defaultId = -1)
+        {
+            return new ProfileKey(defaultId);
         }
     }
 
@@ -300,6 +344,75 @@ Temp2=win+ctrl+F4
 			return matrix;
 		}
 	}
+
+    // Custom Struct for the Profile Keys... does not include a Hotkey.
+    struct ProfileKey
+    {
+
+        public static readonly ProfileKey Empty;
+
+        private static int CurrentId = 100;
+
+        public int Id { get; private set; }
+
+        static ProfileKey()
+        {
+            Empty = new ProfileKey()
+            {
+                Id = 0
+            };
+        }
+
+        public ProfileKey(int id = -1)
+			: this()
+		{
+			if (id == -1)
+			{
+				this.Id = CurrentId;
+				CurrentId++;
+			}
+			else
+			{
+				this.Id = id;
+			}
+		}
+
+		public override int GetHashCode()
+		{
+			return Id << 20;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			if (obj is ProfileKey)
+			{
+				return obj.GetHashCode() == this.GetHashCode();
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		public static bool operator ==(ProfileKey a, ProfileKey b)
+		{
+			return a.GetHashCode() == b.GetHashCode();
+		}
+
+		public static bool operator !=(ProfileKey a, ProfileKey b)
+		{
+			return a.GetHashCode() != b.GetHashCode();
+		}
+
+        public override string ToString()
+        {
+            return "";
+        }
+    }
 
     struct HotKey
 	{

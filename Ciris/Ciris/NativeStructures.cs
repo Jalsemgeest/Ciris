@@ -2,6 +2,8 @@
 using System.Runtime.InteropServices;
 using System.ComponentModel;
 
+// Stays the Same.
+
 namespace Ciris
 {
     //based on http://delphi32.blogspot.com/2010/09/windows-magnification-api-net.html

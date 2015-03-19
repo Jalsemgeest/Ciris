@@ -7,9 +7,11 @@ using System.Runtime.InteropServices;
 /**
  * This is where all the magic happens.
  * This is the class where matrices are used with the built-in magnification tool that is provided by Windows.
- * 
  **/
 
+// TODO
+// Remove some of the functionality for the other Matrices.
+// Add in a method to change it in real time.
 
 
 namespace Ciris
@@ -59,6 +61,8 @@ namespace Ciris
         public static float[,] NegativeHueShift180Variation4 { get; private set; }
 
         public static float[,] Protanopia { get; private set; }
+
+        public static float[,] NewProt { get; private set; }
 
         public static float[,] Tritanopia { get; private set; }
 
@@ -142,9 +146,16 @@ namespace Ciris
 				{   1.0f,   1.0f,   1.0f, 0.0f, 1.0f }
 			};
             Protanopia = new float[,] {
-                {  1.0f,  0.0f,  1.0f,  0.0f,  0.0f },
+                {  1.0f,  0.0f,  0.6f,  0.0f,  0.0f },
                 {  0.0f,  1.0f,  0.0f,  0.0f,  0.0f },
-                {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.4f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
+            NewProt = new float[,] {
+                {  1.0f,  -0.5f,  0.0f,  0.0f,  0.0f },
+                {  0.5f,  1.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  1.0f,  0.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
             };
@@ -221,8 +232,8 @@ namespace Ciris
             ColorEffect colorEffect = new ColorEffect(matrix);
             if (!NativeMethods.SetMagnificationDesktopColorEffect(ref colorEffect))
             {
-                var inner = new Exception("SetMagnificationDesktopColorEffect()", Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error()));
-                throw new Exception("An error occured while applying a color effect. Another application using the same API might be interfering...", inner);
+                //var inner = new Exception("SetMagnificationDesktopColorEffect()", Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error()));
+                //throw new Exception("An error occured while applying a color effect. Another application using the same API might be interfering...", inner);
             }
         }
 
@@ -237,6 +248,8 @@ namespace Ciris
                 System.Windows.Forms.Application.DoEvents();
             }
         }
+
+        
 
         public static float[,] MoreBlue(float[,] colorMatrix)
         {

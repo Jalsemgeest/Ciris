@@ -7,6 +7,12 @@ using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Collections.Concurrent;
 
+
+// TODO
+// Remove the registration of Hotkeys for the Profiles
+// Add event handler for double click to open the GUI
+
+
 namespace Ciris
 {
     /// <summary>
@@ -14,6 +20,12 @@ namespace Ciris
     /// </summary>
     partial class OverlayManager : Form
     {
+
+
+        // Added Ciris;
+        private Ciris ciris;
+
+        private bool cirisOpen = false;
 
         /// <summary>
         /// control whether the main loop is paused or not.
@@ -52,6 +64,7 @@ namespace Ciris
                 invokeColorEffect = colorEffect;
                 SynchronizeMenuItemCheckboxesWithEffect(colorEffect);
                 shouldInvokeColorEffect = true;
+                DoMagnifierApiInvoke();
             }
         }
 
@@ -115,10 +128,11 @@ namespace Ciris
             success &= TryRegisterHotKeyAppendError(Configuration.Current.ExitKey, sb);
             foreach (var item in Configuration.Current.ColorEffects)
             {
-                if (item.Key != HotKey.Empty)
+                // Don't need to try to register them for configurations.
+                /*if (item.Key != HotKey.Empty)
                 {
-                    success &= TryRegisterHotKeyAppendError(item.Key, sb);
-                }
+                    //success &= TryRegisterHotKeyAppendError(item.Key, sb);
+                }*/
             }
             if (!success)
             {
@@ -179,8 +193,8 @@ namespace Ciris
                 ToggleColorEffect(fromNormal: true);
                 while (!exiting)
                 {
-                    System.Threading.Thread.Sleep(Configuration.Current.MainLoopRefreshTime);
-                    DoMagnifierApiInvoke();
+                    //System.Threading.Thread.Sleep(Configuration.Current.MainLoopRefreshTime);
+                    //DoMagnifierApiInvoke();                                                                                                   // Will need to uncomment probabaly.
                     if (mainLoopPaused)
                     {
                         ToggleColorEffect(fromNormal: false);
@@ -208,6 +222,23 @@ namespace Ciris
                 System.Threading.Thread.Sleep(Configuration.Current.MainLoopRefreshTime);
                 DoMagnifierApiInvoke();
             }
+        }
+
+        // Setting up public API for Pausing, Starting and Changing the loop.
+
+        public void toggleColor()
+        {
+            this.mainLoopPaused = !mainLoopPaused;
+        }
+
+        public bool isPaused()
+        {
+            return this.mainLoopPaused;
+        }
+
+        public void setMatrix(ScreenColorEffect effect)
+        {
+            this.InvokeColorEffect(effect);
         }
 
         public bool TryRegisterHotKey(HotKey hotkey, out AlreadyRegisteredHotKeyException exception)
@@ -388,8 +419,29 @@ namespace Ciris
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                Toggle();
+                // Don't want it to toggle it for now.
+                //Toggle();
             }
+        }
+
+        private void trayIcon_DoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                if (ciris == null || !cirisOpen)
+                {
+                    ciris = new Ciris();
+                    ciris.FormClosed += ciris_FormClosed;
+                    cirisOpen = true;
+                }
+                ciris.Show();
+            }
+        }
+
+        // This is called when the GUI is closed.  It creates another GUI so it can be reopened if need be.
+        void ciris_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cirisOpen = false;
         }
 
         #endregion

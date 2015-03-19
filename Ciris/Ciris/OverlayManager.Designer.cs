@@ -1,4 +1,9 @@
-﻿namespace Ciris
+﻿
+// TODO
+// Remove the Edit Configuration Option
+// Add a Open Button?  Or Double Click to open GUI?
+
+namespace Ciris
 {
     partial class OverlayManager
     {
@@ -36,6 +41,7 @@
             this.trayIcon.Text = "Ciris";
             this.trayIcon.Visible = true;
             this.trayIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseClick);
+            this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_DoubleClick);
             // 
             // trayIconContextMenuStrip
             // 
