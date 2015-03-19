@@ -59,19 +59,11 @@ ShowAeroWarning=true
 
 #Protanopia
 Protanopia=
-{  1,  0,  1,  0,  0 }
+{  1,  0,  0.6,  0,  0 }
 {  0,  1,  0,  0,  0 }
-{  0,  0,  0,  0,  0 }
+{  0,  0,  0.4,  0,  0 }
 {  0,  0,  0,  1,  0 }
 {  0,  0,  0,  0,  1 }
-
-#Protanopia2
-Protanopia2=
-{  1.0,  0.0,  0.6,  0.0,  0.0 }
-{  0.0,  1.0,  0,  0.0,  0.0 }
-{  0.0,  0.0,  0.4,  0.0,  0.0 }
-{  0.0,  0.0,  0.0,  1.0,  0.0 }
-{  0.0,  0.0,  0.0,  0.0,  1.0 }
 
 #Tritanopia
 Tritanopia=
@@ -104,6 +96,14 @@ Protanopia Simulation=
 {  1.00,  0.65,  1.00,  0.00,  0.00 }
 {  0.00,  0.00,  0.00,  1.00,  0.00 }
 {  0.00,  0.00,  0.00,  0.00,  1.00 }
+
+#NewProt
+New Protanopia=
+{  1.0,  -0.25,  0,  0.0,  0.0 }
+{  0.25,  1.0,  0,  0.0,  0.0 }
+{  0.0,  0.0,  1,  0.0,  0.0 }
+{  0.0,  0.0,  0.0,  1.0,  0.0 }
+{  0.0,  0.0,  0.0,  0.0,  1.0 }
 
 ";
         #endregion 
@@ -165,7 +165,7 @@ Protanopia Simulation=
 		public HotKey ExitKey { get; protected set; }
 
 		[CorrespondTo("SmoothTransitions")]
-		public bool SmoothTransitions { get; protected set; }
+		public bool SmoothTransitions { get; set; }
 
 		[CorrespondTo("SmoothToggles")]
 		public bool SmoothToggles { get; protected set; }

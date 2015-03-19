@@ -64,6 +64,7 @@ namespace Ciris
                 invokeColorEffect = colorEffect;
                 SynchronizeMenuItemCheckboxesWithEffect(colorEffect);
                 shouldInvokeColorEffect = true;
+                DoMagnifierApiInvoke();
             }
         }
 
@@ -192,8 +193,8 @@ namespace Ciris
                 ToggleColorEffect(fromNormal: true);
                 while (!exiting)
                 {
-                    System.Threading.Thread.Sleep(Configuration.Current.MainLoopRefreshTime);
-                    DoMagnifierApiInvoke();
+                    //System.Threading.Thread.Sleep(Configuration.Current.MainLoopRefreshTime);
+                    //DoMagnifierApiInvoke();                                                                                                   // Will need to uncomment probabaly.
                     if (mainLoopPaused)
                     {
                         ToggleColorEffect(fromNormal: false);

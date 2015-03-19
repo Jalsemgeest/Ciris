@@ -17,11 +17,15 @@ namespace Ciris
         //private List<KeyValuePair<ProfileKey, ScreenColorEffect>> effects;
         private OverlayManager overlay = null;
 
+        private String currentEffect = null;
+
+        private ScreenColorEffect forSlider;
+
         public Ciris()
         {
             // Setting up the overlay connection so we can access the methods from within it.
             overlay = OverlayManager.Instance;
-
+            currentEffect = "Protanopia";
             InitializeComponent();
         }
 
@@ -36,6 +40,12 @@ namespace Ciris
             }
         }
 
+        private void setColor(float[,] matrix, String profile)
+        {
+            forSlider = new ScreenColorEffect(matrix, profile);
+            this.overlay.setMatrix(forSlider);
+        }
+
 
         #region Event Handlers
 
@@ -46,6 +56,16 @@ namespace Ciris
             {
                 // Set it to Normal - IE. The Identity Matrix
                 this.overlay.toggleColor();
+                if (this.overlay.isPaused())
+                {
+                    activated.Text = "OFF";
+                    activated.ForeColor = Color.Red;
+                }
+                else
+                {
+                    activated.Text = "ON";
+                    activated.ForeColor = Color.Green;
+                }
                 // Disable the slider.
             }
         }
@@ -57,7 +77,9 @@ namespace Ciris
                 // If it's paused, then set the color on.
                 //if (this.overlay.isPaused()) { this.overlay.toggleColor(); }
                 // Set it to Protanopia
-                setColor("Protanopia2");
+                setColor("Protanopia");
+                currentEffect = "Protanopia";
+                selectedProfile.Text = currentEffect;
                 // Enable the slider.
             }
         }
@@ -69,7 +91,9 @@ namespace Ciris
                 // If it's paused, then set the color on.
                 //if (this.overlay.isPaused()) { this.overlay.toggleColor(); }
                 // Set it to Deutranopia
-                setColor("Protanopia2");
+                setColor("Protanopia");
+                currentEffect = "Deutranopia";
+                selectedProfile.Text = currentEffect;
                 // Enable the slider...
             }
         }
@@ -80,7 +104,8 @@ namespace Ciris
             {
                 // Set it to Tritanopia
                 setColor("Tritanopia");
-
+                currentEffect = "Tritanopia";
+                selectedProfile.Text = currentEffect;
                 //System.Threading.Thread.Sleep(80);
 
                 // If it's paused, then set the color on.
@@ -90,6 +115,106 @@ namespace Ciris
             }
         }
 
+        private void strengthChanged(object sender, System.EventArgs e)
+        {
+            setPower.Text = strengthBar.Value.ToString()+"%";
+            applyProfile.Enabled = true;
+
+
+            Configuration.Current.SmoothTransitions = false;
+
+            applyProfile.Enabled = false;
+
+            activated.Text = currentEffect;
+
+            float upper = ((float)strengthBar.Value) / 100;
+            float lower = 1.0f - (((float)strengthBar.Value) / 100);
+
+            float[,] matrix;
+
+            if (currentEffect.Equals("Protanopia"))
+            {
+                matrix = new float[,] {
+                {  1.0f,  0.0f,  upper,  0.0f,  0.0f },
+                {  0.0f,  1.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  lower,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }};
+            }
+            else if (currentEffect.Equals("Deutranopia"))
+            {
+                matrix = new float[,] {
+                {  1.0f,  0.0f,  upper,  0.0f,  0.0f },
+                {  0.0f,  1.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  lower,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }};
+            }
+            else
+            {
+                matrix = new float[,] {
+                {  1.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                { -0.1f, -0.1f, -0.1f,  0.0f,  0.0f },
+                {  0.0f,  1.0f,  1.0f,  0.0f,  0.0f},
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f, 0.0f,  0.0f,  0.0f,  1.0f }};
+            }
+
+            setColor(matrix, "Protanopia");
+
+
+            Configuration.Current.SmoothTransitions = true;
+
+        }
+
         #endregion
+
+        private void applyProfile_Click(object sender, EventArgs e)
+        {
+            Configuration.Current.SmoothTransitions = false;
+
+            applyProfile.Enabled = false;
+
+            activated.Text = currentEffect;
+
+            float upper = ((float)strengthBar.Value) / 100;
+            float lower = 1.0f - (((float)strengthBar.Value) / 100);
+
+            float[,] matrix;
+
+            if (currentEffect.Equals("Protanopia"))
+            {
+                matrix = new float[,] {
+                {  1.0f,  0.0f,  upper,  0.0f,  0.0f },
+                {  0.0f,  1.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  lower,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }};
+            }
+            else if (currentEffect.Equals("Deutranopia"))
+            {
+                matrix = new float[,] {
+                {  1.0f,  0.0f,  upper,  0.0f,  0.0f },
+                {  0.0f,  1.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  lower,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }};
+            }
+            else
+            {
+                matrix = new float[,] {
+                {  1.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                { -0.1f, -0.1f, -0.1f,  0.0f,  0.0f },
+                {  0.0f,  1.0f,  1.0f,  0.0f,  0.0f},
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f, 0.0f,  0.0f,  0.0f,  1.0f }};
+            }
+            
+            setColor(matrix, "Protanopia");
+
+
+            Configuration.Current.SmoothTransitions = true;
+
+        }
     }
 }

@@ -47,7 +47,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
@@ -55,11 +56,13 @@
   <ItemGroup>
     <Compile Include="AlreadyRegisteredHotKeyException.cs" />
     <Compile Include="BuiltinMatrices.cs" />
-    <Compile Include="Ciris.cs">
+    <Compile Include="..\..\..\..\Ciris1\Ciris.cs">
+      <Link>Ciris.cs</Link>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ciris.Designer.cs">
+    <Compile Include="..\..\..\..\Ciris1\Ciris.Designer.cs">
       <DependentUpon>Ciris.cs</DependentUpon>
+      <Link>Ciris.Designer.cs</Link>
     </Compile>
     <Compile Include="Configuration.cs" />
     <Compile Include="ConfigurationParser.cs" />
@@ -80,6 +83,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MetroFramework">
+      <HintPath>D:\Downloads\winforms-modernui-master\MetroDLL\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design">
+      <HintPath>D:\Downloads\winforms-modernui-master\MetroDLL\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts">
+      <HintPath>D:\Downloads\winforms-modernui-master\MetroDLL\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -88,6 +100,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\tritanopia.png" />
+    <None Include="Resources\tritanopia.jpeg" />
+    <None Include="Resources\deutranopia.png" />
+    <None Include="Resources\protanopia.png" />
     <None Include="Resources\mainIcon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -108,14 +124,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Ciris.resx">
+    <EmbeddedResource Include="..\..\..\..\Ciris1\Ciris.resx">
       <DependentUpon>Ciris.cs</DependentUpon>
+      <Link>Ciris.resx</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="OverlayManager.resx">
       <DependentUpon>OverlayManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
