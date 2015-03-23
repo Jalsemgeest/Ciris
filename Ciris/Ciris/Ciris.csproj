@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CirisTest</RootNamespace>
-    <AssemblyName>Ciris</AssemblyName>
+    <AssemblyName>Pure Protanopia</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
@@ -52,7 +52,7 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>temp.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AlreadyRegisteredHotKeyException.cs" />
@@ -109,6 +109,7 @@
     <Content Include="libs\MetroFramework.dll" />
     <Content Include="libs\MetroFramework.Fonts.dll" />
     <Content Include="Resources\temp.ico" />
+    <Content Include="temp.ico" />
     <None Include="packages.config" />
     <None Include="Resources\tritanopia.png" />
     <None Include="Resources\deutranopia.png" />
