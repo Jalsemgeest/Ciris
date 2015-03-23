@@ -20,7 +20,7 @@ namespace CirisTest
     class Configuration : IConfigurable
     {
         #region Default Configuration
-        public const string DefaultConfigurationFileName = "ciris.conf";
+        //public const string DefaultConfigurationFileName = "ciris.conf";
         public const string DefaultConfiguration = @"# comments: if the character '#' is found, the rest of the line is ignored.
 # quotes: allow to place a '#' inside a value. they do not appear in the final result.
 # i.e. blah=""hello #1!"" will create a parameter blah with a value of: hello #1!
@@ -134,7 +134,8 @@ New Protanopia=
 
             try
             {
-                configFileContents = System.IO.File.ReadAllText(DefaultConfigurationFileName);
+                //configFileContents = System.IO.File.ReadAllText(DefaultConfigurationFileName);
+                configFileContents = DefaultConfiguration;
             }
             catch (Exception)
             {
