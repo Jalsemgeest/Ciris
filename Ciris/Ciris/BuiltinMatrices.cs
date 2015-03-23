@@ -169,12 +169,19 @@ namespace CirisTest
                 {  0.0f, 0.0f,  0.0f,  0.0f,  1.0f }
             };
             ProtanopiaSim = new float[,] {
+                {  0.00f,  0.00f,  0.00f,  0.00f,  0.00f },
+                {  0.50f,  0.50f,  0.00f,  0.00f,  0.00f },
+                {  1.00f,  0.65f,  1.00f,  0.00f,  0.00f },
+                {  0.00f,  0.00f,  0.00f,  1.00f,  0.00f },
+                {  0.00f,  0.00f,  0.00f,  0.00f,  1.00f }
+            };
+            /*ProtanopiaSim = new float[,] {
                 {  1.00f,  0.00f,  0.00f,  0.00f,  0.00f },
                 {  1.00f,  0.75f,  0.00f,  0.00f,  0.00f },
                 {  0.20f,  0.50f,  1.00f,  0.00f,  0.00f },
                 {  -0.1f,  -0.1f,  -0.2f,  1.00f,  0.00f },
                 {  0.00f,  0.00f,  0.00f,  0.00f,  1.00f }
-            };
+            };*/
         }
 
         private static string MatrixToString(float[,] matrix)
