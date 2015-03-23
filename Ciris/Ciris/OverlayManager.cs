@@ -406,23 +406,23 @@ namespace Ciris
             Exit();
         }
 
-        private void editConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!System.IO.File.Exists(Configuration.DefaultConfigurationFileName))
-            {
-                System.IO.File.WriteAllText(Configuration.DefaultConfigurationFileName, Configuration.DefaultConfiguration);
-            }
-            System.Diagnostics.Process.Start("notepad", Configuration.DefaultConfigurationFileName);
-        }
+        //private void editConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    if (!System.IO.File.Exists(Configuration.DefaultConfigurationFileName))
+        //    {
+        //        System.IO.File.WriteAllText(Configuration.DefaultConfigurationFileName, Configuration.DefaultConfiguration);
+        //    }
+        //    System.Diagnostics.Process.Start("notepad", Configuration.DefaultConfigurationFileName);
+        //}
 
-        private void trayIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
-                // Don't want it to toggle it for now.
-                //Toggle();
-            }
-        }
+        //private void trayIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        //{
+        //    if (e.Button == System.Windows.Forms.MouseButtons.Left)
+        //    {
+        //        // Don't want it to toggle it for now.
+        //        //Toggle();
+        //    }
+        //}
 
         private void trayIcon_DoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
