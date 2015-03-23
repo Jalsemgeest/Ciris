@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 // Stays the Same.
 
-namespace Ciris
+namespace CirisTest
 {
     //based on http://delphi32.blogspot.com/2010/09/windows-magnification-api-net.html
 

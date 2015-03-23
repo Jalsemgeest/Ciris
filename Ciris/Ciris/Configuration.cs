@@ -15,7 +15,7 @@ using System.Linq;
 // Remove Configuration File - LATER
 
 
-namespace Ciris
+namespace CirisTest
 {
     class Configuration : IConfigurable
     {
@@ -149,12 +149,12 @@ New Protanopia=
                 try
                 {
                     // Try setting it to the Protanopia standard.
-                    this.InitialColorEffect = new ScreenColorEffect(BuiltinMatrices.Protanopia, "Protanopia");
+                    this.InitialColorEffect = new ScreenColorEffect(BuiltinMatrices.ProtanopiaSim, "Protanopia Sim");
                 }
                 catch (Exception)
                 {
                     // Probably not ideal
-                    this.InitialColorEffect = new ScreenColorEffect(BuiltinMatrices.Protanopia, "Protanopia");
+                    this.InitialColorEffect = new ScreenColorEffect(BuiltinMatrices.ProtanopiaSim, "Protanopia Sim");
                 }
             }
         }

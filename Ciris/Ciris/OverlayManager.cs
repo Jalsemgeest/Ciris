@@ -13,7 +13,7 @@ using System.Collections.Concurrent;
 // Add event handler for double click to open the GUI
 
 
-namespace Ciris
+namespace CirisTest
 {
     /// <summary>
     /// inherits from Form so that hot keys can be bound to its message loop
@@ -62,7 +62,7 @@ namespace Ciris
             lock (invokeColorEffectLock)
             {
                 invokeColorEffect = colorEffect;
-                SynchronizeMenuItemCheckboxesWithEffect(colorEffect);
+                //SynchronizeMenuItemCheckboxesWithEffect(colorEffect);
                 shouldInvokeColorEffect = true;
                 DoMagnifierApiInvoke();
             }
@@ -109,12 +109,12 @@ namespace Ciris
 
             TryRegisterHotKeys(this.trayIcon);
 
-            toggleInversionToolStripMenuItem.ShortcutKeyDisplayString = Configuration.Current.ToggleKey.ToString();
+            //toggleInversionToolStripMenuItem.ShortcutKeyDisplayString = Configuration.Current.ToggleKey.ToString();
             exitToolStripMenuItem.ShortcutKeyDisplayString = Configuration.Current.ExitKey.ToString();
-            InitializeContextMenu();
+            //InitializeContextMenu();
 
             currentMatrix = Configuration.Current.InitialColorEffect.Matrix;
-            SynchronizeMenuItemCheckboxesWithEffect(Configuration.Current.InitialColorEffect); //requires the context menu to be initialized
+            //SynchronizeMenuItemCheckboxesWithEffect(Configuration.Current.InitialColorEffect); //requires the context menu to be initialized
 
             InitializeControlLoop();
         }
@@ -151,7 +151,7 @@ namespace Ciris
             return true;
         }
 
-        private void InitializeContextMenu()
+        /*private void InitializeContextMenu()
         {
             foreach (var item in Configuration.Current.ColorEffects)
             {
@@ -163,9 +163,9 @@ namespace Ciris
                     var effect = (ScreenColorEffect)((ToolStripMenuItem)s).Tag;
                     InvokeColorEffect(effect);
                 };
-                this.changeModeToolStripMenuItem.DropDownItems.Add(menuItem);
+                //this.changeModeToolStripMenuItem.DropDownItems.Add(menuItem);
             }
-        }
+        }*/
 
         private void InitializeControlLoop()
         {
@@ -374,7 +374,7 @@ namespace Ciris
             base.Dispose(disposing);
         }
 
-        private void SynchronizeMenuItemCheckboxesWithEffect(ScreenColorEffect effect)
+        /*private void SynchronizeMenuItemCheckboxesWithEffect(ScreenColorEffect effect)
         {
             ToolStripMenuItem currentItem = null;
             foreach (ToolStripMenuItem effectItem in this.changeModeToolStripMenuItem.DropDownItems)
@@ -387,7 +387,7 @@ namespace Ciris
             {
                 currentItem.Checked = true;
             }
-        }
+        }*/
 
         #region Event Handlers
 
@@ -420,13 +420,13 @@ namespace Ciris
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 // Don't want it to toggle it for now.
-                //Toggle();
+                Toggle();
             }
         }
 
         private void trayIcon_DoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            /*if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 if (ciris == null || !cirisOpen)
                 {
@@ -435,7 +435,7 @@ namespace Ciris
                     cirisOpen = true;
                 }
                 ciris.Show();
-            }
+            }*/
         }
 
         // This is called when the GUI is closed.  It creates another GUI so it can be reopened if need be.

@@ -7,7 +7,7 @@
     <ProjectGuid>{556F45AD-7137-483F-A36E-D6A39F8DD017}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ciris</RootNamespace>
+    <RootNamespace>CirisTest</RootNamespace>
     <AssemblyName>Ciris</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -108,9 +108,9 @@
     <Content Include="libs\MetroFramework.Design.dll" />
     <Content Include="libs\MetroFramework.dll" />
     <Content Include="libs\MetroFramework.Fonts.dll" />
+    <Content Include="Resources\temp.ico" />
     <None Include="packages.config" />
     <None Include="Resources\tritanopia.png" />
-    <None Include="Resources\tritanopia.jpeg" />
     <None Include="Resources\deutranopia.png" />
     <None Include="Resources\protanopia.png" />
     <None Include="Resources\mainIcon.ico" />

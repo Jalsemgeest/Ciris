@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 // Add in a method to change it in real time.
 
 
-namespace Ciris
+namespace CirisTest
 {
     /// <summary>
     /// Store various built in ColorMatrix
@@ -65,6 +65,8 @@ namespace Ciris
         public static float[,] NewProt { get; private set; }
 
         public static float[,] Tritanopia { get; private set; }
+
+        public static float[,] ProtanopiaSim { get; private set; }
 
         static BuiltinMatrices()
         {
@@ -165,7 +167,13 @@ namespace Ciris
                 {  0.0f,  1.0f,  1.0f,  0.0f,  0.0f},
                 {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
                 {  0.0f, 0.0f,  0.0f,  0.0f,  1.0f }
-
+            };
+            ProtanopiaSim = new float[,] {
+                {  0.00f,  0.00f,  0.00f,  0.00f,  0.00f },
+                {  0.50f,  0.50f,  0.00f,  0.00f,  0.00f },
+                {  1.00f,  0.65f,  1.00f,  0.00f,  0.00f },
+                {  0.00f,  0.00f,  0.00f,  1.00f,  0.00f },
+                {  0.00f,  0.00f,  0.00f,  0.00f,  1.00f }
             };
         }
 

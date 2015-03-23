@@ -3,7 +3,7 @@
 // Remove the Edit Configuration Option
 // Add a Open Button?  Or Double Click to open GUI?
 
-namespace Ciris
+namespace CirisTest
 {
     partial class OverlayManager
     {
@@ -26,19 +26,19 @@ namespace Ciris
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.trayIconContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toggleInversionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            //this.changeModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.editConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            //this.editConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            //this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trayIconContextMenuStrip.SuspendLayout();
+            //this.trayIconContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // trayIcon
             // 
             this.trayIcon.ContextMenuStrip = this.trayIconContextMenuStrip;
             this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("mainIcon")));
-            this.trayIcon.Text = "Ciris";
+            this.trayIcon.Text = "Protanopia Sim";
             this.trayIcon.Visible = true;
             this.trayIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseClick);
             this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_DoubleClick);
@@ -47,10 +47,10 @@ namespace Ciris
             // 
             this.trayIconContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toggleInversionToolStripMenuItem,
-            this.changeModeToolStripMenuItem,
+            //this.changeModeToolStripMenuItem,
             this.toolStripSeparator1,
-            this.editConfigurationToolStripMenuItem,
-            this.toolStripSeparator2,
+            //this.editConfigurationToolStripMenuItem,
+            //this.toolStripSeparator2,
             this.exitToolStripMenuItem});
             this.trayIconContextMenuStrip.Name = "trayIconContextMenuStrip";
             this.trayIconContextMenuStrip.Size = new System.Drawing.Size(172, 126);
@@ -64,9 +64,9 @@ namespace Ciris
             // 
             // changeModeToolStripMenuItem
             // 
-            this.changeModeToolStripMenuItem.Name = "changeModeToolStripMenuItem";
-            this.changeModeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.changeModeToolStripMenuItem.Text = "Change Mode";
+            //this.changeModeToolStripMenuItem.Name = "changeModeToolStripMenuItem";
+            //this.changeModeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            //this.changeModeToolStripMenuItem.Text = "Change Mode";
             // 
             // toolStripSeparator1
             // 
@@ -75,15 +75,15 @@ namespace Ciris
             // 
             // editConfigurationToolStripMenuItem
             // 
-            this.editConfigurationToolStripMenuItem.Name = "editConfigurationToolStripMenuItem";
-            this.editConfigurationToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.editConfigurationToolStripMenuItem.Text = "Edit Configuration";
-            this.editConfigurationToolStripMenuItem.Click += new System.EventHandler(this.editConfigurationToolStripMenuItem_Click);
+            //this.editConfigurationToolStripMenuItem.Name = "editConfigurationToolStripMenuItem";
+            //this.editConfigurationToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            //this.editConfigurationToolStripMenuItem.Text = "Edit Configuration";
+            //this.editConfigurationToolStripMenuItem.Click += new System.EventHandler(this.editConfigurationToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(168, 6);
+            //this.toolStripSeparator2.Name = "toolStripSeparator2";
+            //this.toolStripSeparator2.Size = new System.Drawing.Size(168, 6);
             // 
             // exitToolStripMenuItem
             // 
@@ -97,9 +97,9 @@ namespace Ciris
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("mainIcon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("temp")));
             this.Name = "OverlayManager";
-            this.Text = "Ciris";
+            this.Text = "PureProtanopia";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OverlayManager_FormClosed);
             this.trayIconContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -112,9 +112,9 @@ namespace Ciris
         private System.Windows.Forms.ContextMenuStrip trayIconContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toggleInversionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changeModeToolStripMenuItem;
+        //private System.Windows.Forms.ToolStripMenuItem changeModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem editConfigurationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        //private System.Windows.Forms.ToolStripMenuItem editConfigurationToolStripMenuItem;
+        //private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

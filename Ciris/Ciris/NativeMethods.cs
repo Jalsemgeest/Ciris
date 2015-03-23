@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 // Stays the same.
 
-namespace Ciris
+namespace CirisTest
 {
     // This is based off the Windows Magnification API
     internal static class NativeMethods

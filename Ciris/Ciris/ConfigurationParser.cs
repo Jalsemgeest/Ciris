@@ -8,7 +8,7 @@ using System.Reflection;
  * This class holds the Parser which is used to Parse configuration files.
  **/
 
-namespace Ciris
+namespace CirisTest
 {
     /// <summary>
     /// Represents the class storing the parsed key-value pairs from the configuration file.

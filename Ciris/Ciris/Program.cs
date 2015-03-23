@@ -5,7 +5,7 @@ using System.Windows.Forms;
 // TODO
 // Nothing?
 
-namespace Ciris
+namespace CirisTest
 {
     class Program
     {

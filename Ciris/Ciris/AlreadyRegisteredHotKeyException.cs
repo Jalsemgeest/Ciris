@@ -7,7 +7,7 @@ using System.Windows.Forms;
 // TODO
 // May not need this class as hotkeys will not be for Profiles.
 
-namespace Ciris
+namespace CirisTest
 {
     class AlreadyRegisteredHotKeyException : Exception
     {
