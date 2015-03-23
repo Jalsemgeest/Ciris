@@ -62,7 +62,7 @@ namespace Ciris
             lock (invokeColorEffectLock)
             {
                 invokeColorEffect = colorEffect;
-                SynchronizeMenuItemCheckboxesWithEffect(colorEffect);
+                //SynchronizeMenuItemCheckboxesWithEffect(colorEffect);
                 shouldInvokeColorEffect = true;
                 DoMagnifierApiInvoke();
             }
@@ -111,10 +111,10 @@ namespace Ciris
 
             toggleInversionToolStripMenuItem.ShortcutKeyDisplayString = Configuration.Current.ToggleKey.ToString();
             exitToolStripMenuItem.ShortcutKeyDisplayString = Configuration.Current.ExitKey.ToString();
-            InitializeContextMenu();
+            //InitializeContextMenu();
 
             currentMatrix = Configuration.Current.InitialColorEffect.Matrix;
-            SynchronizeMenuItemCheckboxesWithEffect(Configuration.Current.InitialColorEffect); //requires the context menu to be initialized
+            //SynchronizeMenuItemCheckboxesWithEffect(Configuration.Current.InitialColorEffect); //requires the context menu to be initialized
 
             InitializeControlLoop();
         }
@@ -151,21 +151,21 @@ namespace Ciris
             return true;
         }
 
-        private void InitializeContextMenu()
-        {
-            foreach (var item in Configuration.Current.ColorEffects)
-            {
-                var menuItem = new ToolStripMenuItem(item.Value.Description);
-                menuItem.Tag = item.Value;
-                menuItem.ShortcutKeyDisplayString = item.Key.ToString();
-                menuItem.Click += (s, e) =>
-                {
-                    var effect = (ScreenColorEffect)((ToolStripMenuItem)s).Tag;
-                    InvokeColorEffect(effect);
-                };
-                this.changeModeToolStripMenuItem.DropDownItems.Add(menuItem);
-            }
-        }
+        //private void InitializeContextMenu()
+        //{
+        //    foreach (var item in Configuration.Current.ColorEffects)
+        //    {
+        //        var menuItem = new ToolStripMenuItem(item.Value.Description);
+        //        menuItem.Tag = item.Value;
+        //        menuItem.ShortcutKeyDisplayString = item.Key.ToString();
+        //        menuItem.Click += (s, e) =>
+        //        {
+        //            var effect = (ScreenColorEffect)((ToolStripMenuItem)s).Tag;
+        //            InvokeColorEffect(effect);
+        //        };
+        //        //this.changeModeToolStripMenuItem.DropDownItems.Add(menuItem);
+        //    }
+        //}
 
         private void InitializeControlLoop()
         {
@@ -374,20 +374,20 @@ namespace Ciris
             base.Dispose(disposing);
         }
 
-        private void SynchronizeMenuItemCheckboxesWithEffect(ScreenColorEffect effect)
-        {
-            ToolStripMenuItem currentItem = null;
-            foreach (ToolStripMenuItem effectItem in this.changeModeToolStripMenuItem.DropDownItems)
-            {
-                effectItem.Checked = false; //reset all the check boxes
-                var castItem = (ScreenColorEffect)effectItem.Tag;
-                if (castItem.Matrix == effect.Matrix) currentItem = effectItem; //TODO: should implement equality comparison...
-            }
-            if (currentItem != null)
-            {
-                currentItem.Checked = true;
-            }
-        }
+        //private void SynchronizeMenuItemCheckboxesWithEffect(ScreenColorEffect effect)
+        //{
+        //    ToolStripMenuItem currentItem = null;
+        //    foreach (ToolStripMenuItem effectItem in this.changeModeToolStripMenuItem.DropDownItems)
+        //    {
+        //        effectItem.Checked = false; //reset all the check boxes
+        //        var castItem = (ScreenColorEffect)effectItem.Tag;
+        //        if (castItem.Matrix == effect.Matrix) currentItem = effectItem; //TODO: should implement equality comparison...
+        //    }
+        //    if (currentItem != null)
+        //    {
+        //        currentItem.Checked = true;
+        //    }
+        //}
 
         #region Event Handlers
 

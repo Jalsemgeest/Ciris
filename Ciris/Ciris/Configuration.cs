@@ -134,7 +134,8 @@ New Protanopia=
 
             try
             {
-                configFileContents = System.IO.File.ReadAllText(DefaultConfigurationFileName);
+                configFileContents = DefaultConfiguration;
+                //configFileContents = System.IO.File.ReadAllText(DefaultConfigurationFileName);
             }
             catch (Exception)
             {
