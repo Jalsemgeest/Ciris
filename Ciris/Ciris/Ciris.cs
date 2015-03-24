@@ -154,8 +154,8 @@ namespace Ciris
             {
                 matrix = new float[,] {
                 {  1.0f,  0.0f,  0.0f,  0.0f,  0.0f },
-                { -0.1f, -0.1f, -0.1f,  0.0f,  0.0f },
-                {  0.0f,  1.0f,  1.0f,  0.0f,  0.0f},
+                { -(0.1f * upper), 1.0f(lower - (-0.1f * upper)), -(0.1f*upper),  0.0f,  0.0f },
+                {  0.0f,  upper,  1.0f,  0.0f,  0.0f},
                 {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
                 {  0.0f, 0.0f,  0.0f,  0.0f,  1.0f }};
             }
