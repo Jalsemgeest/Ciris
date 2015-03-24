@@ -31,3 +31,6 @@
 *.ipch
 
 *.pdb
+
+bin/*
+obj/*
