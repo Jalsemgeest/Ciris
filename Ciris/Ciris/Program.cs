@@ -18,8 +18,8 @@ namespace Ciris
             // Checking the bit mode of the OS.
             if (NativeMethods.IsX86InWow64Mode())
             {
-                System.Windows.Forms.MessageBox.Show(@"This was compiled for 32 bit processors.");
-                return;
+                //System.Windows.Forms.MessageBox.Show(@"This was compiled for 32 bit processors.");
+                //return;
             }
 
             // Checking windows version
