@@ -20,7 +20,7 @@ namespace Ciris
     class Configuration : IConfigurable
     {
         #region Default Configuration
-        public const string DefaultConfigurationFileName = "ciris.conf";
+        //public const string DefaultConfigurationFileName = "ciris.conf";
         public const string DefaultConfiguration = @"# comments: if the character '#' is found, the rest of the line is ignored.
 # quotes: allow to place a '#' inside a value. they do not appear in the final result.
 # i.e. blah=""hello #1!"" will create a parameter blah with a value of: hello #1!
@@ -33,8 +33,8 @@ namespace Ciris
 # You can either use its textual representation, or its numerical value.
 # WARNING: if the key is not valid, the program will probably crash...
 
-Toggle=win+alt+N
-Exit=win+alt+H
+Toggle=win+C
+Exit=win+Q
 
 SmoothTransitions=true
 SmoothToggles=true
@@ -134,7 +134,8 @@ New Protanopia=
 
             try
             {
-                configFileContents = System.IO.File.ReadAllText(DefaultConfigurationFileName);
+                configFileContents = DefaultConfiguration;
+                //configFileContents = System.IO.File.ReadAllText(DefaultConfigurationFileName);
             }
             catch (Exception)
             {

@@ -110,7 +110,6 @@
     <Content Include="libs\MetroFramework.Fonts.dll" />
     <None Include="packages.config" />
     <None Include="Resources\tritanopia.png" />
-    <None Include="Resources\tritanopia.jpeg" />
     <None Include="Resources\deutranopia.png" />
     <None Include="Resources\protanopia.png" />
     <None Include="Resources\mainIcon.ico" />
