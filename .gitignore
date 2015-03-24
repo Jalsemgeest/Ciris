@@ -29,3 +29,5 @@
 # SQL Server
 *.sdf
 *.ipch
+
+*.pdb
