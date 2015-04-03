@@ -315,6 +315,7 @@ namespace Ciris
         private void Toggle()
         {
             this.mainLoopPaused = !mainLoopPaused;
+            this.ciris.changeActivated(!this.mainLoopPaused);
         }
 
         private void ToggleColorEffect(bool fromNormal)
@@ -361,6 +362,7 @@ namespace Ciris
                 }
             }
             currentMatrix = matrix;
+            this.ciris.changeActivated(!this.mainLoopPaused);
         }
 
         protected override void Dispose(bool disposing)
