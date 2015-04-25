@@ -33,7 +33,7 @@ namespace Ciris
 # You can either use its textual representation, or its numerical value.
 # WARNING: if the key is not valid, the program will probably crash...
 
-Toggle=win+C
+Toggle=shift+win+C
 Exit=win+Q
 
 SmoothTransitions=true

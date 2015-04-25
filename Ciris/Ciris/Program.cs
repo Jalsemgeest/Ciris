@@ -33,6 +33,11 @@ namespace Ciris
                 return;
             }
 
+            if (Environment.OSVersion.Version > new Version(6, 1))
+            {
+                System.Windows.Forms.MessageBox.Show(@"Ciris is not fully supported for Windows 8 and up. For the best performance, use on Windows 7.");
+            }
+
             // Changes the working directory to be the one with the executable.
             Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             
