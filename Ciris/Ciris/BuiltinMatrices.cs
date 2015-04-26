@@ -229,11 +229,15 @@ namespace Ciris
         // This is where we actually use the matrices with the SetMagnificationDesktopColorEffect.
         public static void ChangeColorEffect(float[,] matrix)
         {
+            
             ColorEffect colorEffect = new ColorEffect(matrix);
+            
             if (!NativeMethods.SetMagnificationDesktopColorEffect(ref colorEffect))
             {
+                
                 //var inner = new Exception("SetMagnificationDesktopColorEffect()", Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error()));
                 //throw new Exception("An error occured while applying a color effect. Another application using the same API might be interfering...", inner);
+                //System.Windows.Forms.MessageBox.Show(inner.StackTrace.ToString());
             }
         }
 

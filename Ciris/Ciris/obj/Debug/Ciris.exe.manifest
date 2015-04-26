@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ciris.exe" size="1798656">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ciris.exe" size="1799168">
       <assemblyIdentity name="Ciris" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>YMTIhVkjzH9y20XhoKdhiJyk+sZsZZOLvClURcSWvIU=</dsig:DigestValue>
+        <dsig:DigestValue>vCvpa5L/2vs2cOKGTztD04a3koZ/+augxPFPOhxVi2s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

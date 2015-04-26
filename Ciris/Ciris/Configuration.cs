@@ -34,7 +34,7 @@ namespace Ciris
 # WARNING: if the key is not valid, the program will probably crash...
 
 Toggle=shift+win+C
-Exit=win+Q
+Exit=shift+win+Q
 
 SmoothTransitions=true
 SmoothToggles=true

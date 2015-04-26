@@ -64,7 +64,19 @@ namespace Ciris
                 invokeColorEffect = colorEffect;
                 //SynchronizeMenuItemCheckboxesWithEffect(colorEffect);
                 shouldInvokeColorEffect = true;
-                DoMagnifierApiInvoke();
+                
+                // Check for the Windows Version
+                // If Windows 8+
+                if (Environment.OSVersion.Version > new Version(6, 2))
+                {
+                    //BuiltinMatrices.InterpolateColorEffect(currentMatrix, currentMatrix);
+                    DoMagnifierApiInvoke();
+                }
+                // Otherwise we are on Windows 7 or below.
+                else
+                {
+                    DoMagnifierApiInvoke();
+                }
             }
         }
 
@@ -338,6 +350,7 @@ namespace Ciris
             {
                 if (Configuration.Current.SmoothToggles)
                 {
+                    // This is when it changes from the current, so it was setting it to the 'current' then setting it to the identity.
                     BuiltinMatrices.InterpolateColorEffect(currentMatrix, BuiltinMatrices.Identity);
                 }
                 else
