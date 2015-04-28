@@ -119,6 +119,8 @@
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
     <Content Include="Icon.ico" />
+    <None Include="Resources\background.png" />
+    <None Include="Resources\cirislogo.png" />
     <None Include="libs\MetroFramework.Design.dll" />
     <None Include="libs\MetroFramework.dll" />
     <None Include="libs\MetroFramework.Fonts.dll" />
@@ -128,6 +130,7 @@
     <None Include="Resources\deutranopia.png" />
     <None Include="Resources\protanopia.png" />
     <None Include="Resources\mainIcon.ico" />
+    <None Include="Venera-900.otf" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
